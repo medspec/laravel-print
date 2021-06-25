@@ -1,8 +1,8 @@
 <?php
 
-namespace IAMProperty\Printer\Renderers;
+namespace MedSpec\LaravelPrinter\Renderers;
 
-use IAMProperty\Printer\Contracts\Renderer as RendererContract;
+use MedSpec\LaravelPrinter\Contracts\Renderer as RendererContract;
 
 abstract class Renderer implements RendererContract
 {

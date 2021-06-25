@@ -1,9 +1,9 @@
 <?php
 
-namespace IAMProperty\Printer;
+namespace MedSpec\LaravelPrinter;
 
-use IAMProperty\Printer\Contracts\Printable;
-use IAMProperty\Printer\Contracts\Printer as PrinterContract;
+use MedSpec\LaravelPrinter\Contracts\Printable;
+use MedSpec\LaravelPrinter\Contracts\Printer as PrinterContract;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Contracts\View\Factory;
 
@@ -19,7 +19,7 @@ class Printer implements PrinterContract
     /**
      * The renderer instance.
      *
-     * @var \IAMProperty\Printer\RendererManager
+     * @var \MedSpec\LaravelPrinter\RendererManager
      */
     protected $renderer;
 
@@ -27,7 +27,7 @@ class Printer implements PrinterContract
      * Create a new PrintManager instance.
      *
      * @param  \Illuminate\Contracts\View\Factory  $views
-     * @param  \IAMProperty\Printer\RendererManager  $printerManager
+     * @param  \MedSpec\LaravelPrinter\RendererManager  $printerManager
      * @return void
      */
     public function __construct(Factory $views, RendererManager $printerManager)
@@ -51,7 +51,7 @@ class Printer implements PrinterContract
     /**
      * Print a document to a string.
      *
-     * @param  \IAMProperty\Printer\Contracts\Printable|string  $view
+     * @param  \MedSpec\LaravelPrinter\Contracts\Printable|string  $view
      * @param  array  $data
      * @return string
      */
@@ -60,17 +60,17 @@ class Printer implements PrinterContract
         if ($view instanceof Printable) {
             return $this->printPrintable($view);
         }
-
+        
         $document = $this->render($view, $data);
 
-        return $this->renderer->render($document);
+        return $this->renderer->render($document, $data);
     }
 
 
     /**
      * Print the given printable.
      *
-     * @param  \IAMProperty\Printer\Contracts\Printable  $printable
+     * @param  \MedSpec\LaravelPrinter\Contracts\Printable  $printable
      * @return mixed
      */
     protected function printPrintable(Printable $printable)

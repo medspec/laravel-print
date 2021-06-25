@@ -1,8 +1,8 @@
 <?php
 
-namespace IAMProperty\Printer\Renderers;
+namespace MedSpec\LaravelPrinter\Renderers;
 
-use IAMProperty\Printer\Contracts\Renderer as RendererContract;
+use MedSpec\LaravelPrinter\Contracts\Renderer as RendererContract;
 use Psr\Log\LoggerInterface;
 
 class LogRenderer extends Renderer implements RendererContract
@@ -28,7 +28,7 @@ class LogRenderer extends Renderer implements RendererContract
     /**
      * {@inheritdoc}
      */
-    public function render($document): string
+    public function render($document, $data): string
     {
         $this->logger->debug($document);
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace IAMProperty\Printer\Renderers;
+namespace MedSpec\LaravelPrinter\Renderers;
 
-use IAMProperty\Printer\Contracts\Renderer as RendererContract;
+use MedSpec\LaravelPrinter\Contracts\Renderer as RendererContract;
 use Illuminate\Support\Collection;
 
 class ArrayRenderer extends Renderer implements RendererContract
@@ -27,7 +27,7 @@ class ArrayRenderer extends Renderer implements RendererContract
     /**
      * {@inheritdoc}
      */
-    public function render($document): string
+    public function render($document, $data): string
     {
         $this->documents[] = $document;
 

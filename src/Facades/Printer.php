@@ -1,13 +1,13 @@
 <?php
 
-namespace IAMProperty\Printer\Facades;
+namespace MedSpec\LaravelPrinter\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static string print(\IAMProperty\Printer\Contracts\Printable|string|array $view, array $data = [])
+ * @method static string print(\MedSpec\LaravelPrinter\Contracts\Printable|string|array $view, array $data = [])
  *
- * @see \IAMProperty\Printer\Printer
+ * @see \MedSpec\LaravelPrinter\Printer
  */
 class Printer extends Facade
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace IAMProperty\Printer;
+namespace MedSpec\LaravelPrinter;
 
-use IAMProperty\Printer\Contracts\Printable as PrintableContract;
-use IAMProperty\Printer\Contracts\Printer;
+use MedSpec\LaravelPrinter\Contracts\Printable as PrintableContract;
+use MedSpec\LaravelPrinter\Contracts\Printer;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\Support\Responsable;
@@ -44,6 +44,7 @@ class Printable implements PrintableContract, Renderable, Responsable
      */
     public function render()
     {
+
         return $this->withLocale($this->locale, function () {
             Container::getInstance()->call([$this, 'build']);
 
@@ -54,13 +55,28 @@ class Printable implements PrintableContract, Renderable, Responsable
     }
 
     /**
+     * Get the evaluated contents of the object.
+     *
+     * @return string
+     */
+    public function store()
+    {   
+
+        $printer = Container::getInstance()->make('printer');
+        $this->print($printer);
+
+        return  true;
+    }
+
+    /**
      * Print the page using using the given printer.
      *
-     * @param  \IAMProperty\Printer\Contracts\Printer  $printer
+     * @param  \MedSpec\LaravelPrinter\Contracts\Printer  $printer
      * @return string
      */
     public function print(Printer $printer): string
     {
+
         return $this->withLocale($this->locale, function () use ($printer) {
             Container::getInstance()->call([$this, 'build']);
 
@@ -77,7 +93,9 @@ class Printable implements PrintableContract, Renderable, Responsable
      */
     public function toResponse($request)
     {
+
         $printer = Container::getInstance()->make('printer');
+
 
         return new Response($this->print($printer), Response::HTTP_OK, [
             'Content-Type' => $printer->format(),
@@ -118,6 +136,73 @@ class Printable implements PrintableContract, Renderable, Responsable
 
         return $this;
     }
+
+    /**
+    * Set the header of the message.
+    *
+    * @param  string  $header
+    * @return $this
+    */
+    public function header($header)
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
+    /**
+    * Set the footer of the message.
+    *
+    * @param  string  $footer
+    * @return $this
+    */
+    public function footer($footer)
+    {
+        $this->footer = $footer;
+
+        return $this;
+    }
+
+
+    /**
+    * Set the disk of the message.
+    *
+    * @param  string  $disk
+    * @return $this
+    */
+    public function disk($disk)
+    {
+        $this->disk = $disk;
+
+        return $this;
+    }
+
+    /**
+    * Set the path of the message.
+    *
+    * @param  string  $path
+    * @return $this
+    */
+    public function path($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+    * Set the filename of the message.
+    *
+    * @param  string  $filename
+    * @return $this
+    */
+    public function filename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
 
     /**
      * Set the view data for the message.

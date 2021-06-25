@@ -1,9 +1,12 @@
 <?php
 
-namespace IAMProperty\Printer;
+namespace MedSpec\LaravelPrinter;
 
-use IAMProperty\Printer\Renderers\ArrayRenderer;
-use IAMProperty\Printer\Renderers\LogRenderer;
+use MedSpec\LaravelPrinter\Renderers\ArrayRenderer;
+use MedSpec\LaravelPrinter\Renderers\LogRenderer;
+use MedSpec\LaravelPrinter\Renderers\Renderer;
+use MedSpec\LaravelPrinter\Renderers\FileRenderer;
+
 use Illuminate\Log\LogManager;
 use Illuminate\Support\Manager;
 use Psr\Log\LoggerInterface;
@@ -13,7 +16,7 @@ class RendererManager extends Manager
     /**
      * Create an instance of the Log Renderer driver.
      *
-     * @return \IAMProperty\Printer\Renderers\LogRenderer
+     * @return \MedSpec\LaravelPrinter\Renderers\LogRenderer
      */
     protected function createLogDriver()
     {
@@ -26,10 +29,23 @@ class RendererManager extends Manager
         return new LogRenderer($logger);
     }
 
+
     /**
      * Create an instance of the Array Renderer driver.
      *
-     * @return \IAMProperty\Printer\Renderers\ArrayRenderer
+     * @return \MedSpec\LaravelPrinter\Renderers\ArrayRenderer
+     */
+    protected function createFileDriver()
+    {
+        return new FileRenderer();
+    }
+
+
+
+    /**
+     * Create an instance of the Array Renderer driver.
+     *
+     * @return \MedSpec\LaravelPrinter\Renderers\ArrayRenderer
      */
     protected function createArrayDriver()
     {

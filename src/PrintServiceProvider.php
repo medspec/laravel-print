@@ -1,6 +1,6 @@
 <?php
 
-namespace IAMProperty\Printer;
+namespace MedSpec\LaravelPrinter;
 
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;

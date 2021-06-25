@@ -1,6 +1,6 @@
 <?php
 
-namespace IAMProperty\Printer\Contracts;
+namespace MedSpec\LaravelPrinter\Contracts;
 
 interface Renderer
 {
@@ -17,5 +17,5 @@ interface Renderer
      * @param  string  $document
      * @return string
      */
-    public function render($document): string;
+    public function render($document, $data): string;
 }
