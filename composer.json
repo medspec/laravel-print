@@ -2,12 +2,13 @@
     "name": "medspec/laravel-print",
     "description": "Document printing like Laravel's Mail package",
     "type": "library",
+    "version": "0.2.2",
     "authors": [
         {
-         "name": "Tycho Huisman",
-         "email": "tycho@mediaspectrum.nl"
-     }
- ],
+           "name": "Tycho Huisman",
+           "email": "tycho@mediaspectrum.nl"
+       }
+   ],
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -21,8 +22,10 @@
     },
     "require": {
         "php": "^7.3",
-        "guzzlehttp/guzzle": "^6.3",
-        "illuminate/support": "^6|^7|^8"
+        "illuminate/container": "^8.0",
+        "illuminate/http": "^8.0",
+        "illuminate/log": "^8.0",
+        "illuminate/support": "^8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0"
