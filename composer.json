@@ -22,10 +22,10 @@
     },
     "require": {
         "php": "^8.2|^8.3",
-        "illuminate/container": "^8.0|^9.0|^10.0|^11.0",
-        "illuminate/http": "^8.0|^9.0|^10.0|^11.0",
-        "illuminate/log": "^8.0|^9.0|^10.0|^11.0",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0"
+        "illuminate/container": "^10.0|^11.0|^12.0",
+        "illuminate/http": "^10.0|^11.0|^12.0",
+        "illuminate/log": "^10.0|^11.0|^12.0",
+        "illuminate/support": "^10.0|^11.0|^12.0"
     },
     "config": {
         "sort-packages": true
